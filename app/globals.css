@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bone text-ink font-body antialiased;
+}
+
+::selection {
+  background: #141312;
+  color: #efebe3;
+}
+
+/* The rail: hairline a garment hangs from */
+.rail {
+  @apply border-t border-ink/20;
+}
+
+.eyebrow {
+  @apply font-body text-[11px] uppercase tracking-rail text-ink/60;
+}
+
+.focus-ring {
+  @apply outline-none focus-visible:ring-1 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-bone;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
