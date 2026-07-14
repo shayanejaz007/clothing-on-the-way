@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo, Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "@/components/CartProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
 
 const display = Archivo({
   subsets: ["latin"],
@@ -21,7 +19,16 @@ const body = Instrument_Sans({
 export const metadata: Metadata = {
   title: "Clothing on the Way — Elevated essentials",
   description:
-    "Elevated essentials for wherever life takes you. Premium streetwear, honestly priced.",
+    "Elevated essentials for wherever life takes you. Premium streetwear, honestly priced. Delivery only — inquire to order.",
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -32,12 +39,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
-        <CartProvider>
-          <Navbar />
-          <CartDrawer />
-          <main>{children}</main>
-          <Footer />
-        </CartProvider>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

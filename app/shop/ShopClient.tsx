@@ -55,7 +55,7 @@ export default function ShopClient() {
       </div>
 
       <p className="mt-6 text-sm text-ink/50">
-        {list.length} {list.length === 1 ? "piece" : "pieces"} — everything $20 to $60
+        {list.length} {list.length === 1 ? "piece" : "pieces"} — everything $25 to $60, delivery only
       </p>
 
       <div className="mt-8 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">

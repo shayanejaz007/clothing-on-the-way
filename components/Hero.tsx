@@ -18,7 +18,7 @@ export default function Hero() {
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "12%"]);
 
   return (
-    <section ref={ref} className="relative min-h-svh overflow-hidden pt-16">
+    <section ref={ref} className="relative min-h-svh overflow-hidden pt-24">
       <div className="mx-auto grid max-w-7xl gap-8 px-5 pb-16 pt-8 md:grid-cols-12 md:px-8 md:pt-14 lg:gap-12">
         {/* Left: headline hanging from the rail */}
         <div className="flex flex-col justify-between md:col-span-6 lg:col-span-5">
@@ -62,8 +62,8 @@ export default function Hero() {
               transition={{ delay: 0.7, duration: 0.8, ease }}
             >
               Premium streetwear built on heavyweight fabric, tonal embossing,
-              and honest prices. Every piece from $20 to $60 — nothing more,
-              nothing hidden.
+              and honest prices. Every piece from $25 to $60, delivered to your
+              door — nothing more, nothing hidden.
             </motion.p>
           </div>
 

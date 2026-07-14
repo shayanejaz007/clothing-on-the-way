@@ -67,7 +67,7 @@ export default function AboutPage() {
           {[
             ["01", "Fewer, better", "One collection at a time. Five pieces done properly beat fifty done fast."],
             ["02", "Felt, not shouted", "Tonal embossing and quiet embroidery. The people who know, know."],
-            ["03", "$20 to $60, always", "A hard ceiling on price is a design constraint we choose on purpose."],
+            ["03", "$25 to $60, delivered", "A hard ceiling on price is a design constraint we choose on purpose."],
           ].map(([n, t, d], i) => (
             <Reveal key={t} delay={i * 0.1}>
               <div className="rail pt-5">

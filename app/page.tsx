@@ -97,7 +97,7 @@ export default function HomePage() {
                 {[
                   ["Fabric first", "Heavyweight cottons chosen by hand feel, then washed for depth."],
                   ["Quiet branding", "Tone-on-tone embossing. Loud construction, low volume."],
-                  ["Honest pricing", "Every piece lands between $20 and $60. That is the whole range."],
+                  ["Honest pricing", "Every piece lands between $25 and $60, delivered. That is the whole range."],
                 ].map(([t, d]) => (
                   <li key={t} className="rail pt-4">
                     <p className="font-display text-sm font-semibold uppercase tracking-wideplus">

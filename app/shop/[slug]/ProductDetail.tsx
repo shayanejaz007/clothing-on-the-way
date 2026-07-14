@@ -4,34 +4,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Truck, RotateCcw } from "lucide-react";
+import { ArrowLeft, Truck, MessageCircle } from "lucide-react";
 import { formatPrice, products, type Product } from "@/lib/products";
 import SizeSelector from "@/components/SizeSelector";
 import ProductCard from "@/components/ProductCard";
-import { useCart } from "@/components/CartProvider";
+import InquiryDrawer from "@/components/InquiryDrawer";
 
 export default function ProductDetail({ product }: { product: Product }) {
-  const { add } = useCart();
   const [size, setSize] = useState<string | null>(
     product.sizes.length === 1 ? product.sizes[0] : null
   );
   const [warn, setWarn] = useState(false);
+  const [inquiryOpen, setInquiryOpen] = useState(false);
 
-  const related = products
-    .filter((p) => p.slug !== product.slug)
-    .slice(0, 3);
+  const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
-  const handleAdd = () => {
+  const handleInquire = () => {
     if (!size) {
       setWarn(true);
       return;
     }
     setWarn(false);
-    add(product, size);
+    setInquiryOpen(true);
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-5 pb-24 pt-24 md:px-8 md:pt-28">
+    <div className="mx-auto max-w-7xl px-5 pb-24 pt-28 md:px-8 md:pt-32">
+      <InquiryDrawer
+        product={product}
+        size={size}
+        open={inquiryOpen}
+        onClose={() => setInquiryOpen(false)}
+      />
+
       <Link
         href="/shop"
         className="focus-ring inline-flex items-center gap-2 eyebrow hover:text-ink"
@@ -62,7 +67,9 @@ export default function ProductDetail({ product }: { product: Product }) {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="rail pt-5">
-            <p className="eyebrow">{product.sku} — {product.category}</p>
+            <p className="eyebrow">
+              {product.sku} — {product.category}
+            </p>
             <h1 className="mt-3 font-display text-3xl font-semibold uppercase tracking-tight md:text-4xl">
               {product.name}
             </h1>
@@ -72,7 +79,9 @@ export default function ProductDetail({ product }: { product: Product }) {
             </p>
           </div>
 
-          <p className="mt-6 leading-relaxed text-ink/75">{product.description}</p>
+          <p className="mt-6 leading-relaxed text-ink/75">
+            {product.description}
+          </p>
 
           <div className="mt-8">
             <div className="flex items-baseline justify-between">
@@ -96,18 +105,21 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
 
           <button
-            onClick={handleAdd}
-            className="focus-ring mt-8 w-full bg-ink py-4 font-display text-sm font-semibold uppercase tracking-wideplus text-bone transition-opacity hover:opacity-90"
+            onClick={handleInquire}
+            className="focus-ring mt-8 flex w-full items-center justify-center gap-2 bg-ink py-4 font-display text-sm font-semibold uppercase tracking-wideplus text-bone transition-opacity hover:opacity-90"
           >
-            Add to bag — {formatPrice(product.price)}
+            <MessageCircle size={16} strokeWidth={1.5} />
+            Inquire to order — {formatPrice(product.price)}
           </button>
 
           <div className="mt-6 flex flex-col gap-2 text-sm text-ink/60">
             <p className="flex items-center gap-2">
-              <Truck size={15} strokeWidth={1.5} /> Free shipping over $75
+              <Truck size={15} strokeWidth={1.5} /> Delivery only — we bring it
+              to you
             </p>
-            <p className="flex items-center gap-2">
-              <RotateCcw size={15} strokeWidth={1.5} /> 30-day returns, no questions
+            <p className="text-xs text-ink/50">
+              Send an inquiry and we confirm availability, price, and a
+              delivery window within 24 hours. No payment is taken online.
             </p>
           </div>
 
@@ -116,7 +128,10 @@ export default function ProductDetail({ product }: { product: Product }) {
             <ul className="mt-3 space-y-2 text-sm text-ink/70">
               {product.details.map((d) => (
                 <li key={d} className="flex gap-3">
-                  <span aria-hidden className="mt-[9px] h-px w-4 shrink-0 bg-ink/40" />
+                  <span
+                    aria-hidden
+                    className="mt-[9px] h-px w-4 shrink-0 bg-ink/40"
+                  />
                   {d}
                 </li>
               ))}

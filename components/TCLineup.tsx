@@ -32,8 +32,8 @@ export default function TCLineup() {
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-ink/65">
               Seven pieces built around one crest — the interlocking TC.
-              Tonal embroidery, heavyweight cottons, the same $20–$60
-              ceiling as everything else we make.
+              Tonal embroidery, heavyweight cottons, the same $25–$60
+              range as everything else we make, delivered to your door.
             </p>
           </div>
         </Reveal>

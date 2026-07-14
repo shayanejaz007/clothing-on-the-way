@@ -18,7 +18,7 @@ export default function Footer() {
             />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-bone/60">
               Elevated essentials for wherever life takes you. Premium
-              streetwear, honestly priced.
+              streetwear, honestly priced. Delivery only — inquire to order.
             </p>
           </div>
 
