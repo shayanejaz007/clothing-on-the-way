@@ -21,6 +21,11 @@ export default function ProductCard({
     >
       <Link href={`/shop/${product.slug}`} className="focus-ring group block">
         <div className="relative aspect-[4/5] overflow-hidden bg-[#e7e2d8]">
+          {product.isNew && (
+            <span className="absolute left-3 top-3 z-10 bg-ink px-2 py-0.5 font-display text-[10px] font-semibold uppercase tracking-wideplus text-bone">
+              New
+            </span>
+          )}
           <Image
             src={product.image}
             alt={`${product.name} in ${product.color}`}

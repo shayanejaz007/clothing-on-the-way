@@ -1,16 +1,25 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/lib/products";
 
-const categories = ["All", "Tees", "Shorts", "Headwear"] as const;
+const categories = ["All", "TC Series", "Tees", "Hoodies", "Crewnecks", "Trousers", "Shorts", "Headwear"] as const;
 
 export default function ShopClient() {
-  const [cat, setCat] = useState<(typeof categories)[number]>("All");
+  const params = useSearchParams();
+  const initial = (params.get("c") as (typeof categories)[number]) ?? "All";
+  const [cat, setCat] = useState<(typeof categories)[number]>(
+    categories.includes(initial as any) ? initial : "All"
+  );
 
   const list = useMemo(
-    () => (cat === "All" ? products : products.filter((p) => p.category === cat)),
+    () => (cat === "All"
+        ? products
+        : cat === "TC Series"
+        ? products.filter((p) => p.collection === "TC Series")
+        : products.filter((p) => p.category === cat)),
     [cat]
   );
 

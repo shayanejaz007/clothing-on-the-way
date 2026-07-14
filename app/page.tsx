@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import ProductCard from "@/components/ProductCard";
 import CampaignMedia from "@/components/CampaignMedia";
+import TCLineup from "@/components/TCLineup";
 import Reveal from "@/components/Reveal";
 import Lookbook from "@/components/Lookbook";
 import { products } from "@/lib/products";
@@ -16,6 +17,15 @@ export default function HomePage() {
     <>
       <Hero />
       <Marquee />
+
+      <TCLineup />
+
+      <CampaignMedia
+        videoSrc="/media/tc-campaign.mp4"
+        posterSrc="/images/tc/tee-bone.jpg"
+        eyebrow="TC Series — Film 001"
+        headline="A crest, quietly worn."
+      />
 
       {/* Featured pieces */}
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
